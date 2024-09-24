@@ -2,7 +2,7 @@
     export interface ProductTypes {
     id: string
     title: string
-    price: string
+    price: number
     images: Array<string>
     description: string
     availabilityStatus: string
@@ -19,15 +19,12 @@
   import "../../app.css"
 
   export let product: ProductTypes
-
-	let clickedItem = ''
-  const toggleModal = (item : any) => {
-    clickedItem = clickedItem === item.id ? '' : item.id
-  }
+  export let toggleModal : (productId: string) => void
+  export let clickedProduct : string
 
 </script>
 
-<button on:click={() => toggleModal(product)} class="product">
+<button on:click={() => toggleModal(product.id)} class="product">
 
   <div class="image-container">
     <img class="image" src={product.images[0]} alt={product.title}/>
@@ -39,9 +36,11 @@
   </div>
 
   <h2>{product.title}</h2>
-  <p> {product.price}</p>
+  <p> {new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'}).format(product.price)}</p>
 
-  <div class={clickedItem === product.id ? 'modal-visible' : 'modal-hidden'}>
+  <div class={clickedProduct === product.id ? 'modal-visible' : 'modal-hidden'}>
     <p> {product.description} </p>
     <p class="italic"> Height: {product.dimensions.height} cm</p>
     <p class="italic"> Width: {product.dimensions.width} cm</p>
@@ -52,7 +51,6 @@
 </button>
 
 <style>
-
 .product {
     display: grid;
     grid-template-columns: 1fr max-content;
