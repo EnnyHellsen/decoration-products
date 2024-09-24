@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Set the base font-size for use of rem */
+html {
+  font-size: 16px;
+}
+
+/* Basic page layout to be re-used throughout the app */
+.page-layout {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
