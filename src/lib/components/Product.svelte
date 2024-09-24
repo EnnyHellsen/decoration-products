@@ -1,7 +1,24 @@
+<script lang="ts" context="module">
+    export interface ProductTypes {
+    id: string
+    title: string
+    price: string
+    images: Array<string>
+    description: string
+    availabilityStatus: string
+    rating: string
+    dimensions: {
+      depth: number
+      height: number
+      width: number
+    }
+  }
+</script>
+
 <script lang="ts">
   import "../../app.css"
 
-  export let product: any
+  export let product: ProductTypes
 
 	let clickedItem = ''
   const toggleModal = (item : any) => {

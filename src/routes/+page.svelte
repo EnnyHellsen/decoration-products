@@ -1,31 +1,18 @@
 <script lang="ts">
   import "../app.css"
   import Product from '../lib/components/Product.svelte'
+  import type { ProductTypes } from '../lib/components/Product.svelte'
 
   interface Data {
     products: {
-      products: {
-        id: string
-        title: string
-        price: string
-        images: Array<string>
-        description: string
-        availabilityStatus: string
-        rating: string
-        dimensions: {
-          depth: number
-          height: number
-          width: number
-        }
-      }[]
+      products: ProductTypes[]
     }
   }
 
-	/** @type {import('./$types').PageData} */
+  /** @type {import('./$types').PageData} */
 	export let data: Data
   const products = data.products.products
   console.log(products)
-
 </script>
 
 <style>
