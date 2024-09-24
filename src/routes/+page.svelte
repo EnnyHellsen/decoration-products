@@ -31,16 +31,21 @@
 
   .product-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: 1fr;
     grid-gap: 30px;
     margin: 0 20px;
-    position: relative;
+  }
+
+  @media screen and (min-width: 800px) {
+    .product-container {
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
   }
 </style>
 
 <main class="page-layout">
   <h1 class="title"> Home Decoration Products </h1>
-  
+
   <div class="product-container">
     {#each products as product}
       <Product {product} {clickedProduct} {toggleModal} />

@@ -3,7 +3,7 @@
     id: string
     title: string
     price: number
-    images: Array<string>
+    images: string[]
     description: string
     availabilityStatus: string
     rating: string
@@ -25,7 +25,6 @@
 </script>
 
 <button on:click={() => toggleModal(product.id)} class="product">
-
   <div class="image-container">
     <img class="image" src={product.images[0]} alt={product.title}/>
     <span 
@@ -34,19 +33,21 @@
     > 
     {product.availabilityStatus}</span>
   </div>
-
   <h2>{product.title}</h2>
   <p> {new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'}).format(product.price)}</p>
 
   <div class={clickedProduct === product.id ? 'modal-visible' : 'modal-hidden'}>
-    <p> {product.description} </p>
-    <p class="italic"> Height: {product.dimensions.height} cm</p>
-    <p class="italic"> Width: {product.dimensions.width} cm</p>
-    <p class="italic"> Depth: {product.dimensions.depth} cm</p>
-
-    <p> <span class="font-bold"> Rating: </span> {product.rating}</p>
+    <div class="modal">
+      <h3 class="text-xl font-bold text-center">{product.title}</h3>
+      <img class="w-[300px] mx-[auto]" src={product.images[1] || product.images[0]} alt={product.title}/>
+      <p class="pb-[10px]"> {product.description} </p>
+      <p class="italic"> Height {product.dimensions.height} in</p>
+      <p class="italic"> Width {product.dimensions.width} in</p>
+      <p class="italic pb-[10px]"> Depth {product.dimensions.depth} in</p>
+      <p> <span class="font-bold"> Rating: </span> {product.rating} out of 5</p>
+    </div>
   </div>
 </button>
 
@@ -73,6 +74,7 @@
 
   .image {
     width: 100%;
+    text-align: center;
   }
 
   .availability {
@@ -86,13 +88,26 @@
 
   .modal-visible {
     display: block;
-    position: absolute;
-    background-color: bisque;
-    width: 300px;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    inset: 0 0 0 0;
+    width: 100%;
+    height: 100%;
   }
 
   .modal-hidden {
     display: none;
+  }
+
+  .modal {
+    background-color: white;
+    border-radius: 7px;
+    width: 90%;
+    max-width: 500px;
+    height: max-content;
+    padding: 20px;
+    margin: 60px auto 0;
   }
 	
 </style>
