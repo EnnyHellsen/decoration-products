@@ -33,7 +33,7 @@
     > 
     {product.availabilityStatus}</span>
   </div>
-  <h3 class="font-bold">{product.title}</h3>
+  <p class="font-bold">{product.title}</p>
   <p class="italic"> 
     {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(product.price)}
   </p>

@@ -8,7 +8,7 @@ export let clickedProduct : string
 
 <div class={clickedProduct === product.id ? 'modal-visible' : 'modal-hidden'}>
   <div class="modal">
-    <h3 class="text-xl font-bold text-center">{product.title}</h3>
+    <p class="text-xl font-bold text-center">{product.title}</p>
     <img class="w-[300px] mx-[auto]" src={product.images[1] || product.images[0]} alt={product.title}/>
     <p class="pb-[10px]"> {product.description} </p>
     <p class="italic"> Height {product.dimensions.height} in</p>
