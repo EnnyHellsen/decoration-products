@@ -22,7 +22,6 @@
   export let product: ProductTypes
   export let toggleModal : (productId: string) => void
   export let clickedProduct : string
-
 </script>
 
 <button on:click={() => toggleModal(product.id)} class="product">
@@ -58,6 +57,7 @@
     border-radius: 7px;
     position: relative;
     transition: all 0.4s;
+    min-height: 370px;
   }
 
   .image-container:hover {
